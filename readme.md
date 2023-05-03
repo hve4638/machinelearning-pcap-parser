@@ -1,5 +1,7 @@
-# 기계학습개론 프로젝트
+# 23s Machine Learning Project
 
-다음 데이터셋을 사용함 :
+## parser.py
 
-https://ocslab.hksecurity.net/Datasets/iot-environment-dataset
+```bash
+python parser.py 'json 경로' 2> '에러로그 경로'
+```

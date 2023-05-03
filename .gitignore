@@ -1,1 +1,5 @@
-dataset/IoT Environment Dataset/
+dataset/
+example.json
+output.csv
+err.txt
+__pycache__
