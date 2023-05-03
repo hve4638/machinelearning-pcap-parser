@@ -1,6 +1,6 @@
 # 23s Machine Learning Project
 
-## parser.py
+## pcapjsonparser.py
 
 ```bash
 python pcapjsonparser.py 'json 경로' 2> '에러로그 경로'
