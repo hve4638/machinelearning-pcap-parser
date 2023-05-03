@@ -47,7 +47,7 @@ def on_error(data:map, exception:Exception, number:int):
     pass
 
 #target = "example.json"
-pcapjson.parse(target, on_parse, on_error)
+pcapjson.parse(target, on_parse, on_error)  
 with open("output.csv", "w", encoding="utf-8", newline='') as f:
     writer = csv.writer(f)
     writer.writerow(headers.row)
