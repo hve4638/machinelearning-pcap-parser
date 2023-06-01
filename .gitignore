@@ -1,5 +1,3 @@
 dataset/
-example.json
-output.csv
-err.txt
-__pycache__
+img/
+rawpackets/
