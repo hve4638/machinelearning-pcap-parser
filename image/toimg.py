@@ -1,60 +1,25 @@
-from PIL import Image
-import numpy as np
+import sys
+from imglib import *;
 
-def checkarr(array):
-    height = len(array)
-    if height == 0:
-        print("Empty array")
-        return
+# toimg.py [경로] [파일명(prefix)] [begin index] [end index] [저장경로]
 
-    width = len(array[0])
+target_dir = sys.argv[1]
+fname_prefix = sys.argv[2]
+beginindex = int(sys.argv[3])
+endindex = int(sys.argv[4])
+dest_dir = sys.argv[5]
 
-    print("Height:", height)
-    print("Widths:", end=" ")
-    for inner_array in array:
-        print(len(inner_array), end=" ")
-    print()
+if not target_dir.endswith("/"):
+    target_dir += "/"
+if not dest_dir.endswith("/"):
+    dest_dir += "/"
 
-def read_binary_file(filename):
-    with open(filename, 'rb') as f:
-        byte_list = list(f.read())
-    return byte_list
+target = []
+for i in range(beginindex, endindex):
+    target.append(f"{fname_prefix}{i}")
 
-def save_binary_as_image(filename, binary_data):
-    array_data = np.array(binary_data)
-    image = Image.fromarray(array_data.astype(np.uint8))
-    image.save(filename)
-
-def d2(arr, max_length):
-    num_elements = len(arr)
-    if num_elements < max_length:
-        padding = [0] * (max_length - num_elements)
-        arr.extend(padding)
-    num_rows = (num_elements + max_length - 1) // max_length
-    two_d_array = [arr[i * max_length: (i + 1) * max_length] for i in range(num_rows)]
-    if num_elements % max_length != 0:
-        padding = [0] * (max_length - num_elements % max_length)
-        two_d_array[-1].extend(padding)
-
-    return two_d_array
-
-def padding(arr, w, h):
-    arr = arr[:]
-    length = len(arr)
-    for i in range(h - len(arr)):
-        arr.append([0] * w)
-    return arr
-
-ls = ["packet_0", "packet_1", "packet_2"]
-for i in range(0, 10001):
-    ls.append(f"packet_{i}")
-
-for i, fname in enumerate(ls):
-    print(f"{i}, ", len(read_binary_file(f"packets/{fname}")))
-
-    continue
-    binary_data = d2(read_binary_file(f"packets/{fname}"), 40)
+for i, fname in enumerate(target):
+    binary_data = d2(read_binary_file(f"{target_dir}{fname}"), 40)
     binary_data = padding(binary_data, 40, 40)
 
-    #checkarr(binary_data)
-    save_binary_as_image(f'results/{fname}.png', binary_data)
+    save_binary_as_image(f'{dest_dir}{fname}.png', binary_data)
