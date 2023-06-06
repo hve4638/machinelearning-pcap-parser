@@ -38,9 +38,20 @@ def d2(arr, max_length):
 
     return two_d_array
 
-def padding(arr, w, h):
+def arr_padding(arr, w, h):
     arr = arr[:]
     length = len(arr)
     for i in range(h - len(arr)):
         arr.append([0] * w)
     return arr
+
+def arr_truncate(array, cut_rows, cut_cols):
+    rows = len(array)
+    cols = len(array[0])
+
+    if cut_rows <= rows and cut_cols <= cols:
+        cut_array = [row[:cut_cols] for row in array[:cut_rows]]
+    else:
+        cut_array = array
+
+    return cut_array

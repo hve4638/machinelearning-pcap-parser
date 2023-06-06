@@ -14,7 +14,7 @@ headers = pcapjson.Headers()
 headers += ["TimeDelta", "timedelta"]
 headers += ["Length", "length", "len"]
 headers += ["Port", "port"]
-headers += ["Attack", "attack"]
+#headers += ["Attack", "attack"]
 #headers += ["Time", "time"]
 #headers += ["Source", "src"]
 #headers += ["Destination", "dest"]
@@ -33,11 +33,12 @@ def on_parse(data:map):
     
     contents["port"] = layers["tcp"]["tcp.dstport"]
     contents["length"] = layers["frame"]["frame.len"]
-    contents["attack"] = "0"
+    #contents["attack"] = "0"
 
     rows.append(contents)
 
 count = 0;
+
 def on_error(data:map, exception:Exception, number:int):
     global count
     count += 1

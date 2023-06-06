@@ -1,22 +1,19 @@
 import sys
-from imglib import *;
+from mllib import *;
 
-# getsize.py [경로] [파일명(prefix)] [begin index] [end index]
+# getsize.py [경로] [파일명(prefix)] [range] []
 
-target_dir = sys.argv[1]
+target_dir = to_dirpath(sys.argv[1])
 fname_prefix = sys.argv[2]
-beginindex = int(sys.argv[3])
-endindex = int(sys.argv[4])
-
-if not target_dir.endswith("/"):
-    target_dir += "/"
+st, ed = to_numrange(sys.argv[3])
 
 target = []
-for i in range(beginindex, endindex):
+for i in range(st, ed):
     target.append(f"{fname_prefix}{i}")
 
 for i, fname in enumerate(target):
-    print(f"{i}, ", len(read_binary_file(f"{target_dir}{fname}")))
+    length = len(read_binary_file(f"{target_dir}{fname}"))
+    print(f"{i}, ", length)
 
     continue
     binary_data = d2(read_binary_file(f"packets/{fname}"), 40)

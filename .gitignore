@@ -2,3 +2,6 @@ dataset/
 img/
 rawpackets/
 target/
+contents/
+__pycache__/
+result/
