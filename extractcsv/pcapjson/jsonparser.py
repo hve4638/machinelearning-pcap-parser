@@ -15,10 +15,6 @@ def parse(target:str, on_parse, on_error):
 
             sys.stderr.write(f'Exception Occurs : KeyError ')
             sys.stderr.write(f"{ex}")
-            sys.stderr.write(f'(')
-            sys.stderr.write(f'number: {i}, ')
-            sys.stderr.write(f'time_relative: {val}')
-            sys.stderr.write(f')')
             sys.stderr.write(f'\n')
             on_error(data=data, exception=ex, number = i+1)
         except Exception as ex:
