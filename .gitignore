@@ -6,4 +6,7 @@ contents/
 __pycache__/
 result/
 tmp/
+input/*.json
+output/*.txt
+output/*.csv
 *.pcap
