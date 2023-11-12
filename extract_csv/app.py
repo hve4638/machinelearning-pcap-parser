@@ -43,13 +43,13 @@ def on_parse(data:map):
     layers = data["_source"]["layers"]
 
     time_relative = layers["frame"]["frame.time_relative"]
-    #print(time_relative)
 
     contents["timedelta"] = layers["frame"]["frame.time_delta"]
     contents["time"] = time_relative
     contents["port"] = layers["tcp"]["tcp.dstport"]
     contents["length"] = layers["frame"]["frame.len"]
     contents["no"] = layers["frame"]["frame.number"]
+    
     if "ip.addr" in layers["ip"]:
         src = layers["ip"]["ip.src_host"]
         dst = layers["ip"]["ip.dst_host"]

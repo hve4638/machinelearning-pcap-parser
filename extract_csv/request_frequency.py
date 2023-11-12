@@ -1,4 +1,8 @@
 import re
+
+"""
+
+"""
 class RequestFrequency:
     RE_TIMERELATIVE = re.compile(r"(\d+)[.](\d{9})")
     def __init__(self, time_interval=1):
